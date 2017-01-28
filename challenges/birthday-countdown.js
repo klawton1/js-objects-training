@@ -33,4 +33,47 @@
 
 */
 
-// YOUR CODE HERE
+
+// YOUR CODE HERE      dateMonth = 5   todayMonth =  3
+var daysUntilDate = function(date){
+  var daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
+  var date = new Date(date);
+  var today = new Date();
+  dateMonth = date.getMonth();
+  dateDay = date.getDate();
+  todayMonth = today.getMonth();
+  todayDay = today.getDate();
+  console.log("dateMonth:",dateMonth)
+  monthDifference = dateMonth - todayMonth;
+  var totalDays = 0
+  if(monthDifference != 0){
+    var daysLeft = daysInMonth[todayMonth] - todayDay
+    console.log("days left:", daysLeft)
+    totalDays = totalDays + daysLeft
+    for(var i = todayMonth + 1; i != dateMonth; i = (i + 1)%12){
+      totalDays = totalDays + daysInMonth[i];
+      console.log("total days:", totalDays);
+    }
+    totalDays = totalDays + dateDay;
+    console.log("total diffference:", totalDays)
+  }else{
+    var dayDifference = dateDay - todayDay;
+    if (dayDifference > 0){
+      totalDays = dayDifference;
+    }
+    else if (dayDifference < 0){
+      totalDays = 365 + dayDifference;
+    }
+    else{
+      totalDays = 0
+    }
+  }
+  console.log('answer is:', totalDays);
+}
+
+var birthdayReminder = function(birthdays){
+  for(var i=0; i<birthdays.length; i++){
+    console.log(daysUntilDate(birthday.dob))
+  }
+}
+

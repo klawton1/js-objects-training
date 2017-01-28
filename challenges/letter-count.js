@@ -31,3 +31,30 @@
 */
 
 // YOUR CODE HERE
+function letterCount(string){
+  string = string.toLowerCase();
+  var letters = /^[A-Za-z]+$/;
+  var letterCount = {};
+  var arr = [];
+  for(var i=0; i< string.length; i++){
+    if(string[i].match(letters)){
+      arr.push(string[i]);
+    }
+  }
+  for(var i=0; i<arr.length;i++){
+    var letter = arr[i];
+    if(letter in letterCount){
+      for(a in letterCount){
+        if(a == arr[i]){
+          letterCount[a] = letterCount[a] + 1;
+          break;
+        }
+      }
+    }
+    else{
+      letterCount[letter] = 1;
+    }
+  }
+  return letterCount;
+}
+

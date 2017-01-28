@@ -38,3 +38,35 @@
 */
 
 // YOUR CODE HERE
+function pingPong(){
+  var length = prompt("table length:");
+  var table = [{steps: 0}];
+  var increment = 1;
+  for(var i=1; i < length; i++){
+    table.push(null);
+  }  
+  var pings = 25;
+  for(var i=0; i < pings; i++){
+    var index = 0;
+    for(var x = 0; x< table.length; x++){
+      if(table[x] === null){
+        continue;
+      }else{
+        index = x;
+        break;
+      }
+    }
+    table[index].steps = i + 1;
+    if(index === 0){
+      increment = 1;
+    }
+    if(index === table.length - 1){
+      increment = -1;
+    }
+    table[index + increment] = table[index];
+    table[index] = null;
+  }
+  return table;
+}
+
+
